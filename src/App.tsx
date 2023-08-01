@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import './style.css';
 import buttons from './buttons';
-function Calculator() {
-  const [result, setResult] = useState('');
 
-  const handleClick = (value: string) => {
+function Calculator(): JSX.Element {
+  const [result, setResult] = useState<string>('');
+
+  const handleClick = (value: string): void => {
     if (value === '=') {
       try {
         setResult(eval(result));
@@ -23,12 +24,12 @@ function Calculator() {
       <input
         type="text"
         id="result"
-        value={!result ? 0 : result}
+        value={!result ? '0' : result}
         disabled
         className="h-[100px] bg-slate-900 w-full text-white "
       />
       <div className="keypad grid grid-cols-4">
-        {buttons.map((button) => (
+        {buttons.map((button: string) => (
           <button
             key={button}
             className={`button ${button === '=' ? 'equals' : ''}`}
