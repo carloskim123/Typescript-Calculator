@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import './style.css';
 import buttons from './buttons';
 
 type Button = string;
 
 function Calculator(): JSX.Element {
-  const [result, setResult] = useState<string>('');
+  const [result, setResult] = React.useState<string>('');
 
   const handleClick = (value: Button): void => {
     if (value === '=') {
