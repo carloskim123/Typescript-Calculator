@@ -1,13 +1,13 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import './style.css';
 import buttons from './buttons';
 
 type Button = string;
 
-function Calculator(): JSX.Element {
-  const [result, setResult] = React.useState<string>('');
+function Calculator<T extends Button>(): JSX.Element {
+  const [result, setResult] = useState<string>('');
 
-  const handleClick = (value: Button): void => {
+  const handleClick = (value: T): void => {
     if (value === '=') {
       try {
         setResult(eval(result));
@@ -31,7 +31,7 @@ function Calculator(): JSX.Element {
         className="h-[100px] bg-slate-900 w-full text-white "
       />
       <div className="keypad grid grid-cols-4">
-        {buttons.map((button: Button) => (
+        {buttons.map((button: T) => (
           <button
             key={button}
             className={`button ${button === '=' ? 'equals' : ''}`}
