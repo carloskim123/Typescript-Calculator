@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import './style.css';
 import buttons from './buttons';
 
+type Button = string;
+
 function Calculator(): JSX.Element {
   const [result, setResult] = useState<string>('');
 
-  const handleClick = (value: string): void => {
+  const handleClick = (value: Button): void => {
     if (value === '=') {
       try {
         setResult(eval(result));
@@ -29,7 +31,7 @@ function Calculator(): JSX.Element {
         className="h-[100px] bg-slate-900 w-full text-white "
       />
       <div className="keypad grid grid-cols-4">
-        {buttons.map((button: string) => (
+        {buttons.map((button: Button) => (
           <button
             key={button}
             className={`button ${button === '=' ? 'equals' : ''}`}
