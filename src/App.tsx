@@ -3,7 +3,6 @@ import './style.css';
 import buttons from './buttons';
 function Calculator() {
   const [result, setResult] = useState('');
-  const storage = [];
 
   const handleClick = (value: string) => {
     if (value === '=') {
